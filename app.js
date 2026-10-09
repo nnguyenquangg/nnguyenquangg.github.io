@@ -19,9 +19,9 @@ const rand = (a, b) => Math.random() * (b - a) + a;
 const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
 const wait = (ms) => new Promise((r) => setTimeout(r, reduced ? 50 : ms));
 
-const HEARTS = ['💗', '💖', '💕', '🩷', '❤️', '💘', '✨'];
+const HEARTS = ['💗', '💖', '💕', '💓', '❤️', '💘', '✨'];
 const RAIN = ['💗', '💖', '🌸', '✨', '💕', '⭐'];
-const BALLOONS = ['🎈', '🎈', '🩷'];
+const BALLOONS = ['🎈', '🎈', '💝'];
 
 // ---------- stars ----------
 for (let i = 0; i < 40; i++) {

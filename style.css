@@ -275,7 +275,7 @@ body[data-stage="3"] .big-heart, body[data-stage="4"] .big-heart {
 /* tap hint */
 .hint {
   position: absolute;
-  left: 50%; bottom: 5%;
+  left: 50%; bottom: calc(5% + env(safe-area-inset-bottom, 0px));
   transform: translateX(-50%);
   display: flex; align-items: center; gap: 8px;
   padding: 10px 18px 10px 12px;
@@ -334,7 +334,7 @@ body[data-ready="0"] .hint { opacity: 0; transform: translateX(-50%) translateY(
 /* replay */
 .replay {
   position: absolute;
-  right: 16px; bottom: 16px;
+  right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   width: 52px; height: 52px;
   border-radius: 50%;
   border: 0;
