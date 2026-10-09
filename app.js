@@ -212,7 +212,7 @@ function reset() {
 
 function intro() {
   hint('Chạm để anh chạy qua');
-  setTimeout(() => say(boyBubble, 'Linh ơi! 👋'), 500);
+  setTimeout(() => say(boyBubble, 'Lynk ơi! 👋'), 500);
   setTimeout(() => say(girlBubble, 'Hửm? 🙄', 2500), 1500);
   setReady(true);
 }
