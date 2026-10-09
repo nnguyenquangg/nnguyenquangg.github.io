@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#ffb3c6">
+  <title>Thư khẩn gửi Linh</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%8C%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sky" id="sky" aria-hidden="true"></div>
+
+  <main class="page">
+
+    <section class="card hero">
+      <p class="badge">📮 Thư khẩn · Độ ưu tiên: CỰC CAO</p>
+      <h1>Gửi Linh,<br>người đang đọc dòng này bằng mặt nghiêm túc</h1>
+      <p class="lead">Anh có một việc rất quan trọng cần thông báo. Nghiêm trọng lắm. Đọc hết nha, không được lướt.</p>
+      <a class="btn btn-primary" href="#chan-doan">Đọc tiếp đi mà 👇</a>
+    </section>
+
+    <section class="card" id="chan-doan">
+      <h2>🩺 Kết quả khám tim</h2>
+      <p class="muted">Bệnh nhân: Anh · Bác sĩ: Cũng là anh · Độ tin cậy: 100% (tự chấm)</p>
+      <dl class="report">
+        <div><dt>Triệu chứng</dt><dd>Nhớ Linh 24/7, kể cả lúc đang ở cạnh Linh.</dd></div>
+        <div><dt>Nguyên nhân</dt><dd>Linh quá dễ thương. Vượt ngưỡng cho phép.</dd></div>
+        <div><dt>Biến chứng</dt><dd>Cười một mình khi xem lại tin nhắn. Hàng xóm bắt đầu nghi ngờ.</dd></div>
+        <div><dt>Phác đồ điều trị</dt><dd>Ôm 1 cái/ngày. Hôn trán 2 cái/ngày. Không được bỏ liều.</dd></div>
+        <div><dt>Tiên lượng</dt><dd>Mãn tính. Không chữa được. Yêu em cả đời.</dd></div>
+      </dl>
+    </section>
+
+    <section class="card">
+      <h2>🎰 Máy bốc lý do</h2>
+      <p class="muted">Anh có quá nhiều lý do để yêu em nên phải làm cái máy này cho đỡ quên.</p>
+      <p class="reason" id="reason" aria-live="polite">Bấm nút để bốc một lý do nào 👇</p>
+      <button class="btn btn-primary" id="reason-btn" type="button">Bốc một lý do 🎲</button>
+      <p class="counter muted" id="reason-count"></p>
+    </section>
+
+    <section class="card">
+      <h2>📊 Thống kê quan trọng</h2>
+      <ul class="stats">
+        <li><span class="num" data-count="100" data-suffix="%">0%</span><span class="lbl">Tỷ lệ anh nghĩ về em trong ngày</span></li>
+        <li><span class="num" data-count="0">0</span><span class="lbl">Số lần anh thấy em không xinh</span></li>
+        <li><span class="num" data-count="999" data-suffix="+">0</span><span class="lbl">Lần anh định nhắn tin rồi xoá vì ngại</span></li>
+        <li><span class="num" data-count="1">0</span><span class="lbl">Người anh muốn ở bên (là em đó)</span></li>
+      </ul>
+    </section>
+
+    <section class="card question" id="question">
+      <h2>❓ Câu hỏi quan trọng nhất</h2>
+      <p class="big-q">Em có yêu anh không?</p>
+      <p class="hint muted" id="hint">Chọn kỹ nha. Có một nút hơi… nhát.</p>
+      <div class="choices" id="choices">
+        <button class="btn btn-yes" id="yes-btn" type="button">Có 💖</button>
+        <button class="btn btn-no" id="no-btn" type="button">Không</button>
+      </div>
+    </section>
+
+    <section class="card result hidden" id="result" aria-live="assertive">
+      <p class="emoji" aria-hidden="true">🥳</p>
+      <h2>Anh biết mà! 😎</h2>
+      <p class="lead">Câu trả lời đã được ghi nhận vào hệ thống. Không hoàn tác được đâu nha.</p>
+      <div class="contract">
+        <h3>📜 Hợp đồng tình yêu</h3>
+        <ol>
+          <li>Bên A (anh) cam kết yêu bên B (Linh) vô điều kiện, kể cả lúc bên B cáu.</li>
+          <li>Bên B được quyền giận, nhưng không quá 15 phút. Sau đó phải cho ôm.</li>
+          <li>Mọi món ngon bên A đều phải chia cho bên B một miếng. Miếng to.</li>
+          <li>Hợp đồng có hiệu lực vĩnh viễn. Không có điều khoản chấm dứt.</li>
+        </ol>
+        <p class="sign">Ký tên: Anh ❤️ &nbsp;·&nbsp; Bên B: <span id="sign-name">Linh</span> (đã bấm Có, tính là ký rồi)</p>
+      </div>
+      <button class="btn btn-primary" id="hug-btn" type="button">Ôm anh một cái 🤗</button>
+      <p class="muted small" id="hug-count"></p>
+    </section>
+
+    <footer class="foot muted">
+      <p>Làm bằng tay, bằng tim, và hơi nhiều cà phê. Không có nút Không nào bị hại trong quá trình làm trang này.</p>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
