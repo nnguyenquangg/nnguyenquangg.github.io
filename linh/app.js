@@ -1,243 +1,180 @@
 'use strict';
 
-// ---------------------------------------------------------------------------
-// Cấu hình: chỉ cần sửa ở đây nếu muốn đổi tên hoặc lời nhắn.
-// Lưu ý an toàn: trang này KHÔNG đọc URL / hash / referrer / localStorage,
-// KHÔNG dùng innerHTML / eval / document.write. Mọi chữ hiển thị đều đi qua
-// textContent, nên dữ liệu không bao giờ được parse thành HTML.
-// ---------------------------------------------------------------------------
-const NAME = 'Linh';
+// An toàn: không đọc URL/hash/referrer/storage, không innerHTML/eval.
+// Mọi nội dung hiển thị là emoji/chuỗi cố định, gắn qua textContent.
 
-const REASONS = [
-  'Vì em cười một cái là anh quên luôn đang định nói gì.',
-  'Vì em ăn gì cũng ngon, kể cả lúc giành đồ ăn của anh.',
-  'Vì em giận cũng xinh. Hơi khó chịu, nhưng xinh.',
-  'Vì em nhớ hết mấy chuyện nhỏ xíu mà anh kể.',
-  'Vì mỗi lần em gọi tên anh là tim anh tự động tăng ga.',
-  'Vì em chịu được anh. Cái này ít ai làm được.',
-  'Vì em là lý do anh thích thứ Hai hơn một chút.',
-  'Vì em ngủ dậy tóc rối mà vẫn dễ thương, vô lý.',
-  'Vì em hay hỏi "anh ăn gì chưa", mà hỏi thật chứ không hỏi cho có.',
-  'Vì em làm anh muốn trở thành phiên bản tốt hơn của chính mình.',
-  'Vì ôm em là hết mệt. Đã kiểm chứng nhiều lần.',
-  'Vì em là em. Hết. Không cần lý do nữa.'
-];
+const body = document.body;
+const scene = document.getElementById('scene');
+const fx = document.getElementById('fx');
+const boy = document.querySelector('.boy');
+const girl = document.querySelector('.girl');
+const stars = document.getElementById('stars');
+const replay = document.getElementById('replay');
 
-const NO_TEXTS = [
-  'Không',
-  'Chắc chưa?',
-  'Nghĩ lại đi…',
-  'Ơ kìa 😳',
-  'Nút này hỏng rồi',
-  'Anh buồn đó 🥺',
-  'Bấm Có đi mà',
-  'Thôi em đừng cố',
-  'Hết chỗ chạy rồi',
-  'Em thắng… à không'
-];
-
-const HINTS = [
-  'Chọn kỹ nha. Có một nút hơi… nhát.',
-  'Ủa, nút Không nó chạy kìa.',
-  'Nút Có càng ngày càng to là có lý do hết á.',
-  'Em bấm trúng rồi anh cũng không tin đâu.',
-  'Anh lập trình nút Không 3 tiếng chỉ để nó chạy. Trân trọng nó đi.',
-  'Nó nhỏ dần rồi, thấy chưa?',
-  'Còn mỗi nút Có to đùng thôi, đừng ngại.'
-];
-
-const HUG_LINES = [
-  'Ôm cái nữa đi, anh chưa đã.',
-  'Hơi chặt. Nhưng anh thích.',
-  'Em ôm anh còn nhiều hơn em ôm gối rồi đó.',
-  'Mỗi cái ôm đều được ghi vào sổ. Sổ dày lắm.',
-  'Thôi để dành tí, gặp nhau ôm thật.'
-];
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-const $ = (id) => document.getElementById(id);
-const rand = (min, max) => Math.random() * (max - min) + min;
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const rand = (a, b) => Math.random() * (b - a) + a;
 const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const wait = (ms) => new Promise((r) => setTimeout(r, reduced ? 50 : ms));
 
-function spawn(parent, className, text, left, duration, extraStyle) {
+const HEARTS = ['💗', '💖', '💕', '🩷', '❤️', '💘', '✨'];
+const RAIN = ['💗', '💖', '🌸', '✨', '💕', '⭐'];
+const BALLOONS = ['🎈', '🎈', '🩷'];
+
+// ---------- stars ----------
+for (let i = 0; i < 40; i++) {
+  const s = document.createElement('span');
+  s.className = 'star';
+  s.style.left = rand(0, 100) + '%';
+  s.style.top = rand(0, 100) + '%';
+  s.style.animationDelay = rand(0, 2.4) + 's';
+  s.style.transform = 'scale(' + rand(0.5, 1.2) + ')';
+  stars.appendChild(s);
+}
+
+// ---------- effects ----------
+function spawnFx(className, text, styles, lifeMs) {
   const el = document.createElement('span');
   el.className = className;
   el.textContent = text;
-  el.style.left = left + '%';
-  el.style.animationDuration = duration + 's';
-  if (extraStyle) Object.assign(el.style, extraStyle);
-  parent.appendChild(el);
+  Object.assign(el.style, styles);
+  fx.appendChild(el);
   el.addEventListener('animationend', () => el.remove(), { once: true });
+  setTimeout(() => el.remove(), lifeMs);
   return el;
 }
 
-// ---------------------------------------------------------------------------
-// Tên
-// ---------------------------------------------------------------------------
-$('sign-name').textContent = NAME;
-
-// ---------------------------------------------------------------------------
-// Trái tim bay lên nền
-// ---------------------------------------------------------------------------
-const sky = $('sky');
-const HEART_EMOJI = ['💗', '💖', '💕', '🩷', '❤️', '✨'];
-
-function floatHeart() {
-  if (document.hidden) return;
-  spawn(sky, 'heart', pick(HEART_EMOJI), rand(0, 100), rand(6, 11), {
-    fontSize: rand(14, 30) + 'px'
-  });
-}
-if (!reducedMotion) {
-  for (let i = 0; i < 6; i++) setTimeout(floatHeart, i * 400);
-  setInterval(floatHeart, 900);
-}
-
-// ---------------------------------------------------------------------------
-// Máy bốc lý do
-// ---------------------------------------------------------------------------
-const reasonEl = $('reason');
-const reasonCount = $('reason-count');
-let remaining = REASONS.slice();
-let drawn = 0;
-
-$('reason-btn').addEventListener('click', () => {
-  if (remaining.length === 0) remaining = REASONS.slice();
-  const idx = Math.floor(Math.random() * remaining.length);
-  const text = remaining.splice(idx, 1)[0];
-  drawn++;
-  reasonEl.textContent = text;
-  reasonEl.classList.remove('pop');
-  void reasonEl.offsetWidth; // restart animation
-  reasonEl.classList.add('pop');
-  if (drawn >= REASONS.length) {
-    reasonCount.textContent = 'Hết ' + REASONS.length + ' lý do rồi. Mà bốc tiếp vẫn được, anh có thêm.';
-  } else {
-    reasonCount.textContent = 'Lý do ' + drawn + '/' + REASONS.length + '. Còn ' + remaining.length + ' lý do nữa.';
-  }
-  for (let i = 0; i < 3; i++) floatHeart();
-});
-
-// ---------------------------------------------------------------------------
-// Số đếm chạy khi cuộn tới
-// ---------------------------------------------------------------------------
-function animateCount(el) {
-  const target = Number(el.dataset.count) || 0;
-  const suffix = el.dataset.suffix || '';
-  const start = performance.now();
-  const dur = 1200;
-  function tick(now) {
-    const t = Math.min(1, (now - start) / dur);
-    const eased = 1 - Math.pow(1 - t, 3);
-    el.textContent = Math.round(target * eased) + suffix;
-    if (t < 1) requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-}
-const nums = document.querySelectorAll('.stats .num');
-if ('IntersectionObserver' in window) {
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) { animateCount(e.target); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.5 });
-  nums.forEach((n) => io.observe(n));
-} else {
-  nums.forEach(animateCount);
-}
-
-// ---------------------------------------------------------------------------
-// Nút Không chạy trốn
-// ---------------------------------------------------------------------------
-const noBtn = $('no-btn');
-const yesBtn = $('yes-btn');
-const hint = $('hint');
-const choices = $('choices');
-let dodges = 0;
-let answered = false;
-let lastFlee = 0;
-
-function flee() {
-  if (answered) return;
-  // Một lần chạm có thể bắn mouseenter + pointerdown + click: chỉ tính 1 lần né.
-  const now = Date.now();
-  if (now - lastFlee < 350) return;
-  lastFlee = now;
-  dodges++;
-  noBtn.classList.add('fleeing');
-  const pad = 12;
-  const w = noBtn.offsetWidth;
-  const h = noBtn.offsetHeight;
-  const maxX = Math.max(pad, window.innerWidth - w - pad);
-  const maxY = Math.max(pad, window.innerHeight - h - pad);
-  // Tránh chui xuống dưới nút Có: chỉ cần chọn vị trí ngẫu nhiên cách xa chuột hiện tại.
-  noBtn.style.left = Math.round(rand(pad, maxX)) + 'px';
-  noBtn.style.top = Math.round(rand(pad, maxY)) + 'px';
-
-  noBtn.textContent = NO_TEXTS[Math.min(dodges, NO_TEXTS.length - 1)];
-  hint.textContent = HINTS[Math.min(dodges, HINTS.length - 1)];
-
-  const scale = Math.min(1 + dodges * 0.12, 2.1);
-  yesBtn.style.transform = 'scale(' + scale + ')';
-  choices.style.minHeight = Math.round(90 * scale) + 'px';
-
-  if (dodges >= 5) noBtn.classList.add('tiny');
-  if (dodges >= 9) {
-    noBtn.style.opacity = '0';
-    noBtn.style.pointerEvents = 'none';
-    setTimeout(() => { noBtn.classList.add('hidden'); }, 350);
-  }
-}
-
-noBtn.addEventListener('mouseenter', flee);
-noBtn.addEventListener('pointerdown', (e) => { e.preventDefault(); flee(); });
-noBtn.addEventListener('click', (e) => { e.preventDefault(); flee(); });
-noBtn.addEventListener('focus', flee);
-
-// ---------------------------------------------------------------------------
-// Bấm Có
-// ---------------------------------------------------------------------------
-const result = $('result');
-const CONFETTI = ['💖', '💗', '🎉', '✨', '💘', '🌸', '🎊', '💝'];
-
-function confettiBurst(n) {
-  if (reducedMotion) return;
+function popHearts(x, y, n) {
   for (let i = 0; i < n; i++) {
-    setTimeout(() => {
-      spawn(sky, 'confetti', pick(CONFETTI), rand(0, 100), rand(2.5, 5), {
-        fontSize: rand(16, 34) + 'px'
-      });
-    }, i * 25);
+    spawnFx('pop', pick(HEARTS), {
+      left: x + rand(-18, 18) + 'px',
+      top: y + rand(-18, 18) + 'px',
+      fontSize: rand(18, 34) + 'px',
+      animationDelay: i * 60 + 'ms'
+    }, 1600);
   }
 }
 
-yesBtn.addEventListener('click', () => {
-  if (answered) return;
-  answered = true;
-  noBtn.classList.add('hidden');
-  yesBtn.textContent = 'Có 💖 (đã chốt)';
-  yesBtn.style.transform = 'scale(1.15)';
-  yesBtn.disabled = true;
-  hint.textContent = 'Anh biết mà. 😏';
-  result.classList.remove('hidden');
-  confettiBurst(70);
-  setTimeout(() => result.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' }), 150);
+function burstAt(x, y, n) {
+  for (let i = 0; i < n; i++) {
+    const ang = (Math.PI * 2 * i) / n + rand(-0.3, 0.3);
+    const dist = rand(60, 140);
+    spawnFx('burst', pick(HEARTS), {
+      left: x + 'px',
+      top: y + 'px',
+      fontSize: rand(16, 30) + 'px',
+      '--dx': Math.round(Math.cos(ang) * dist) + 'px',
+      '--dy': Math.round(Math.sin(ang) * dist) + 'px'
+    }, 1200);
+  }
+}
+
+function rainOne() {
+  spawnFx('rain', pick(RAIN), {
+    left: rand(0, 100) + '%',
+    fontSize: rand(16, 30) + 'px',
+    animationDuration: rand(3, 6) + 's'
+  }, 7000);
+}
+
+function balloonOne() {
+  spawnFx('balloon', pick(BALLOONS), {
+    left: rand(5, 90) + '%',
+    animationDuration: rand(7, 11) + 's'
+  }, 12000);
+}
+
+function center(el) {
+  const r = el.getBoundingClientRect();
+  return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+}
+
+// ---------- story ----------
+let stage = 0;
+let busy = false;
+let rainTimer = null;
+
+function setStage(n) {
+  stage = n;
+  body.dataset.stage = String(n);
+}
+function setReady(v) {
+  body.dataset.ready = v ? '1' : '0';
+}
+
+async function advance(tapX, tapY) {
+  if (busy) return;
+  busy = true;
+  setReady(false);
+
+  if (stage === 0) {
+    boy.classList.remove('waving');
+    boy.classList.add('walking');
+    setStage(1);
+    await wait(2650);
+    boy.classList.remove('walking');
+  } else if (stage === 1) {
+    setStage(2);
+    await wait(500);
+    girl.classList.add('jump');
+    const g = center(girl);
+    burstAt(g.x, g.y - 60, 14);
+    await wait(1100);
+    girl.classList.remove('jump');
+    balloonOne();
+  } else if (stage === 2) {
+    setStage(3);
+    await wait(1300);
+    const c = { x: window.innerWidth / 2, y: window.innerHeight * 0.5 };
+    burstAt(c.x, c.y, 22);
+    await wait(900);
+    setStage(4);
+    if (!reduced) {
+      rainTimer = setInterval(rainOne, 260);
+      setTimeout(balloonOne, 400);
+      setTimeout(balloonOne, 1800);
+      setTimeout(balloonOne, 3400);
+    }
+    busy = false;
+    return; // stage 4: no more hint, taps just make hearts
+  } else {
+    busy = false;
+    return;
+  }
+
+  busy = false;
+  setReady(true);
+}
+
+function reset() {
+  if (rainTimer) { clearInterval(rainTimer); rainTimer = null; }
+  while (fx.firstChild) fx.removeChild(fx.firstChild);
+  busy = false;
+  boy.classList.remove('walking');
+  boy.classList.add('waving');
+  girl.classList.remove('jump');
+  setStage(0);
+  setReady(true);
+}
+
+scene.addEventListener('pointerdown', (e) => {
+  if (e.target === replay) return;
+  popHearts(e.clientX, e.clientY, 3);
+  if (stage < 4) advance(e.clientX, e.clientY);
 });
 
-// ---------------------------------------------------------------------------
-// Nút ôm
-// ---------------------------------------------------------------------------
-let hugs = 0;
-const hugCount = $('hug-count');
-$('hug-btn').addEventListener('click', (e) => {
-  hugs++;
-  confettiBurst(18);
-  for (let i = 0; i < 6; i++) floatHeart();
-  e.currentTarget.classList.remove('shake');
-  void e.currentTarget.offsetWidth;
-  e.currentTarget.classList.add('shake');
-  hugCount.textContent = 'Đã ôm ' + hugs + ' cái. ' + HUG_LINES[Math.min(hugs - 1, HUG_LINES.length - 1)];
+replay.addEventListener('pointerdown', (e) => e.stopPropagation());
+replay.addEventListener('click', (e) => {
+  e.stopPropagation();
+  reset();
 });
+
+// ---------- idle sparkle ----------
+boy.classList.add('waving');
+if (!reduced) {
+  setInterval(() => {
+    if (document.hidden) return;
+    const who = Math.random() < 0.5 ? boy : girl;
+    const c = center(who);
+    spawnFx('pop', '✨', { left: c.x + rand(-50, 50) + 'px', top: c.y + rand(-70, 20) + 'px', fontSize: '18px' }, 1600);
+  }, 1400);
+}
