@@ -154,6 +154,77 @@ body[data-stage="3"] .ground, body[data-stage="4"] .ground { filter: brightness(
   100% { left: -60px; }
 }
 
+/* ---------- dog: Ngác ---------- */
+.dog {
+  position: absolute;
+  bottom: 11.5%;
+  left: -110px;
+  width: 84px;
+  z-index: 1;
+  cursor: pointer;
+  animation: dogrun 16s linear infinite 1s;
+  transition: filter 2s ease;
+}
+body[data-stage="3"] .dog, body[data-stage="4"] .dog { filter: brightness(.7); }
+@keyframes dogrun {
+  0%   { left: -110px; }
+  44%  { left: calc(100% + 20px); }
+  50%  { left: calc(100% + 20px); }
+  94%  { left: -110px; }
+  100% { left: -110px; }
+}
+.dog-flip { animation: dogflip 16s step-end infinite 1s; transform-origin: 50% 50%; }
+@keyframes dogflip {
+  0%   { transform: scaleX(1); }
+  47%  { transform: scaleX(-1); }
+  97%  { transform: scaleX(1); }
+  100% { transform: scaleX(1); }
+}
+.dog-svg { display: block; width: 100%; height: auto; overflow: visible; animation: dogbob .32s ease-in-out infinite alternate; }
+@keyframes dogbob { from { transform: translateY(0); } to { transform: translateY(-4px); } }
+.dog .dleg, .dog .tail, .dog .ear, .dog .dhead { transform-box: fill-box; }
+.dog .dleg { transform-origin: 50% 0; }
+.dog .dleg-a { animation: stepA .32s ease-in-out infinite; }
+.dog .dleg-b { animation: stepB .32s ease-in-out infinite; }
+.dog .tail { transform-origin: 100% 100%; animation: wag .25s ease-in-out infinite alternate; }
+@keyframes wag { from { transform: rotate(-18deg); } to { transform: rotate(22deg); } }
+.dog .ear { transform-origin: 50% 0; animation: flap .32s ease-in-out infinite alternate; }
+@keyframes flap { from { transform: rotate(-8deg); } to { transform: rotate(14deg); } }
+.dog .dhead { transform-origin: 30% 100%; animation: nod 1.2s ease-in-out infinite; }
+.dog.bark .dog-svg { animation: dogjump .5s ease-out 2; }
+@keyframes dogjump { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(-30px) rotate(-6deg); } }
+.dog-name {
+  position: absolute;
+  left: 50%; bottom: calc(100% + 2px);
+  transform: translateX(-50%);
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.9);
+  color: #3b2a33;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 3px 8px rgba(0,0,0,.15);
+  pointer-events: none;
+}
+.dog-bubble {
+  position: absolute;
+  left: 50%; bottom: calc(100% + 26px);
+  transform: translateX(-50%) scale(.5);
+  padding: 6px 11px;
+  border-radius: 14px;
+  background: #fff;
+  color: #3b2a33;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 6px 14px rgba(0,0,0,.16);
+  opacity: 0;
+  transition: opacity .2s, transform .3s cubic-bezier(.34,1.56,.64,1);
+  pointer-events: none;
+}
+.dog-bubble.show { opacity: 1; transform: translateX(-50%) scale(1); }
+
 /* ---------- characters ---------- */
 .actor {
   position: absolute;
@@ -395,6 +466,8 @@ body[data-stage="4"] .replay { opacity: 1; pointer-events: auto; transform: scal
 
 @media (min-width: 700px) {
   .actor { width: 210px; }
+  .dog { width: 120px; }
+  .dog-name { font-size: 14px; }
   .bubble { font-size: 18px; max-width: 260px; }
   body[data-stage="1"] .boy, body[data-stage="2"] .boy { left: calc(50% - 215px); }
   body[data-stage="3"] .boy,  body[data-stage="4"] .boy  { left: calc(50% - 176px); }

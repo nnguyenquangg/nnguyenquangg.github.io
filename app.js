@@ -217,6 +217,24 @@ function intro() {
   setReady(true);
 }
 
+// ---------- Ngác ----------
+const dog = document.getElementById('dog');
+const dogBubble = document.getElementById('dog-bubble');
+const BARKS = ['Gâu! 🐶', 'Gâu gâu!', 'Ngác đây! 🐾', 'Chơi với Ngác đi', 'Gâu? 🦴', 'Hức hức 🐕'];
+let barkTimer = null;
+dog.addEventListener('pointerdown', (e) => {
+  e.stopPropagation();
+  const c = center(dog);
+  popHearts(c.x, c.y - 20, 4);
+  dog.classList.remove('bark');
+  void dog.offsetWidth;
+  dog.classList.add('bark');
+  dogBubble.textContent = pick(BARKS);
+  dogBubble.classList.add('show');
+  clearTimeout(barkTimer);
+  barkTimer = setTimeout(() => dogBubble.classList.remove('show'), 1600);
+});
+
 scene.addEventListener('pointerdown', (e) => {
   if (e.target === replay) return;
   popHearts(e.clientX, e.clientY, 3);
