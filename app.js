@@ -10,6 +10,9 @@ const boy = document.querySelector('.boy');
 const girl = document.querySelector('.girl');
 const stars = document.getElementById('stars');
 const replay = document.getElementById('replay');
+const hintText = document.getElementById('hint-text');
+const boyBubble = document.getElementById('boy-bubble');
+const girlBubble = document.getElementById('girl-bubble');
 
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const rand = (a, b) => Math.random() * (b - a) + a;
@@ -88,10 +91,41 @@ function center(el) {
   return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
 }
 
+// ---------- speech ----------
+function say(bubble, text, holdMs) {
+  bubble.textContent = text;
+  bubble.classList.add('show');
+  if (holdMs) setTimeout(() => { if (bubble.textContent === text) bubble.classList.remove('show'); }, holdMs);
+}
+function hush(bubble) { bubble.classList.remove('show'); }
+function hint(text) { hintText.textContent = text; }
+
 // ---------- story ----------
 let stage = 0;
 let busy = false;
 let rainTimer = null;
+let banterTimer = null;
+
+const BANTER = [
+  [boyBubble, 'Hơn gì mà hơn 😤'],
+  [girlBubble, 'Hơn là hơn 😝'],
+  [boyBubble, 'Thôi, ôm tiếp 🤗'],
+  [girlBubble, 'Ừm 🥰'],
+  [boyBubble, 'Mai đi ăn gì? 🍜'],
+  [girlBubble, 'Gì cũng được… 🙃'],
+  [boyBubble, 'Câu này quen quen 😂'],
+  [girlBubble, 'Im 😡💗']
+];
+function startBanter() {
+  let i = 0;
+  if (banterTimer) clearInterval(banterTimer);
+  banterTimer = setInterval(() => {
+    if (document.hidden) return;
+    const [who, line] = BANTER[i % BANTER.length];
+    say(who, line, 2600);
+    i++;
+  }, 3200);
+}
 
 function setStage(n) {
   stage = n;
@@ -109,33 +143,51 @@ async function advance(tapX, tapY) {
   if (stage === 0) {
     boy.classList.remove('waving');
     boy.classList.add('walking');
+    hush(boyBubble); hush(girlBubble);
     setStage(1);
-    await wait(2650);
+    await wait(400);
+    say(boyBubble, 'Đợi anh xíu… 🏃');
+    await wait(2250);
     boy.classList.remove('walking');
+    say(boyBubble, 'Hì, tới rồi 😅', 1500);
+    await wait(1500);
+    say(girlBubble, 'Ủa, có gì đó? 👀');
+    hint('Chạm để anh tặng quà');
   } else if (stage === 1) {
+    hush(girlBubble);
     setStage(2);
-    await wait(500);
+    say(boyBubble, 'Tặng em nè 💝', 1400);
+    await wait(700);
     girl.classList.add('jump');
     const g = center(girl);
     burstAt(g.x, g.y - 60, 14);
-    await wait(1100);
+    await wait(700);
+    say(girlBubble, 'Aaa dễ thương quá 😍');
+    await wait(900);
     girl.classList.remove('jump');
     balloonOne();
+    hint('Chạm để ôm một cái');
   } else if (stage === 2) {
+    hush(boyBubble); hush(girlBubble);
     setStage(3);
     await wait(1300);
     const c = { x: window.innerWidth / 2, y: window.innerHeight * 0.5 };
     burstAt(c.x, c.y, 22);
-    await wait(900);
+    say(boyBubble, 'Yêu em 💗', 1700);
+    await wait(1700);
+    say(girlBubble, 'Yêu anh hơn 💕', 2400);
     setStage(4);
+    startBanter();
     if (!reduced) {
       rainTimer = setInterval(rainOne, 260);
       setTimeout(balloonOne, 400);
       setTimeout(balloonOne, 1800);
       setTimeout(balloonOne, 3400);
     }
+    hint('Chạm khắp nơi cho tim bay');
     busy = false;
-    return; // stage 4: no more hint, taps just make hearts
+    setReady(true);
+    return;
   } else {
     busy = false;
     return;
@@ -147,12 +199,21 @@ async function advance(tapX, tapY) {
 
 function reset() {
   if (rainTimer) { clearInterval(rainTimer); rainTimer = null; }
+  if (banterTimer) { clearInterval(banterTimer); banterTimer = null; }
   while (fx.firstChild) fx.removeChild(fx.firstChild);
   busy = false;
   boy.classList.remove('walking');
   boy.classList.add('waving');
   girl.classList.remove('jump');
+  hush(boyBubble); hush(girlBubble);
   setStage(0);
+  intro();
+}
+
+function intro() {
+  hint('Chạm để anh chạy qua');
+  setTimeout(() => say(boyBubble, 'Linh ơi! 👋'), 500);
+  setTimeout(() => say(girlBubble, 'Hửm? 🙄', 2500), 1500);
   setReady(true);
 }
 
@@ -170,6 +231,7 @@ replay.addEventListener('click', (e) => {
 
 // ---------- idle sparkle ----------
 boy.classList.add('waving');
+intro();
 if (!reduced) {
   setInterval(() => {
     if (document.hidden) return;

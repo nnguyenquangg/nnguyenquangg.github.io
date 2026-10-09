@@ -1,512 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#9fd8ff">
+  <title>Linh 💗</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%97%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-stage="0" data-ready="1">
+  <div class="scene" id="scene">
 
-    <title>Quang Nguyen - Backend Developer</title>
-    <meta content="" name="description" />
-    <meta content="" name="keywords" />
+    <div class="sky sky-day"></div>
+    <div class="sky sky-sunset"></div>
+    <div class="sky sky-night"></div>
+    <div class="stars" id="stars" aria-hidden="true"></div>
+    <div class="sun"></div>
+    <div class="moon"><span class="crater c1"></span><span class="crater c2"></span></div>
 
-    <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon" />
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
 
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-      rel="stylesheet"
-    />
+    <span class="butterfly" aria-hidden="true">🦋</span>
+    <span class="bird" aria-hidden="true">🐦</span>
 
-    <!-- Vendor CSS Files -->
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
-    <link
-      href="assets/vendor/bootstrap/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
-    <link
-      href="assets/vendor/glightbox/css/glightbox.min.css"
-      rel="stylesheet"
-    />
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <div class="ground">
+      <span class="flower f1">🌷</span>
+      <span class="flower f2">🌼</span>
+      <span class="flower f3">🌸</span>
+      <span class="flower f4">🌷</span>
+      <span class="flower f5">🌼</span>
+      <span class="cat" aria-hidden="true">🐈</span>
+    </div>
 
-    <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet" />
+    <svg class="big-heart" viewBox="0 0 100 100" aria-hidden="true">
+      <path d="M50 88 C10 60 2 34 18 20 C30 10 44 16 50 28 C56 16 70 10 82 20 C98 34 90 60 50 88Z" fill="#ff4d79"/>
+      <path d="M30 30 C26 34 25 40 27 44" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none" opacity=".8"/>
+    </svg>
 
-    <!-- =======================================================
-  * Template Name: iPortfolio
-  * Updated: Jul 27 2023 with Bootstrap v5.3.1
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-  </head>
 
-  <body>
-    <!-- ======= Mobile nav toggle button ======= -->
-    <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+    <!-- BOY -->
+    <div class="actor boy">
+    <div class="bubble" id="boy-bubble" aria-live="polite"></div>
+    <svg class="char" viewBox="0 0 120 170" aria-label="chàng trai">
+      <g class="legs">
+        <g class="leg leg-l"><rect x="43" y="116" width="15" height="36" rx="7" fill="#3b4a6b"/><ellipse cx="50" cy="153" rx="12" ry="6" fill="#2b2b3a"/></g>
+        <g class="leg leg-r"><rect x="62" y="116" width="15" height="36" rx="7" fill="#3b4a6b"/><ellipse cx="69" cy="153" rx="12" ry="6" fill="#2b2b3a"/></g>
+      </g>
+      <g class="arm arm-l"><rect x="28" y="90" width="13" height="36" rx="6.5" fill="#4f8df7"/><circle cx="34.5" cy="127" r="7" fill="#ffd9b8"/></g>
+      <rect class="body" x="36" y="84" width="48" height="48" rx="18" fill="#4f8df7"/>
+      <circle cx="60" cy="100" r="4" fill="#fff" opacity=".9"/>
+      <circle cx="60" cy="114" r="4" fill="#fff" opacity=".9"/>
+      <g class="head">
+        <circle cx="60" cy="54" r="36" fill="#ffd9b8"/>
+        <ellipse cx="24" cy="58" rx="5" ry="7" fill="#ffd9b8"/>
+        <ellipse cx="96" cy="58" rx="5" ry="7" fill="#ffd9b8"/>
+        <path class="hair" d="M24 58 C22 -6 98 -6 96 58 C92 44 84 46 78 52 C74 40 62 38 56 48 C50 38 40 42 36 50 C32 44 26 48 24 58 Z" fill="#4a2e1f"/>
+        <ellipse class="blush" cx="36" cy="68" rx="7" ry="4" fill="#ff9bb3"/>
+        <ellipse class="blush" cx="84" cy="68" rx="7" ry="4" fill="#ff9bb3"/>
+        <g class="eyes">
+          <g class="eye"><ellipse cx="46" cy="60" rx="4.5" ry="6.5" fill="#2b2b3a"/><circle cx="48" cy="57.5" r="1.8" fill="#fff"/></g>
+          <g class="eye"><ellipse cx="74" cy="60" rx="4.5" ry="6.5" fill="#2b2b3a"/><circle cx="76" cy="57.5" r="1.8" fill="#fff"/></g>
+        </g>
+        <g class="heart-eyes">
+          <path d="M46 65 C37 58 41 51 46 56 C51 51 55 58 46 65Z" fill="#ff4d79"/>
+          <path d="M74 65 C65 58 69 51 74 56 C79 51 83 58 74 65Z" fill="#ff4d79"/>
+        </g>
+        <path class="mouth" d="M52 76 Q60 84 68 76" stroke="#c0392b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path class="mouth-open" d="M53 75 Q60 88 67 75 Z" fill="#c0392b"/>
+      </g>
+      <g class="arm arm-r">
+        <rect x="79" y="90" width="13" height="36" rx="6.5" fill="#4f8df7"/>
+        <circle cx="85.5" cy="127" r="7" fill="#ffd9b8"/>
+        <g class="gift">
+          <path d="M85.5 140 C70 128 76 114 85.5 122 C95 114 101 128 85.5 140Z" fill="#ff4d79"/>
+          <path d="M79 121 C77.5 122.5 77 125 77.5 127" stroke="#fff" stroke-width="1.6" stroke-linecap="round" fill="none" opacity=".8"/>
+        </g>
+      </g>
+    </svg>
 
-    <!-- ======= Header ======= -->
-    <header id="header">
-      <div class="d-flex flex-column">
-        <div class="profile">
-          <img
-            src="assets/img/profile-img.jpg"
-            alt=""
-            class="img-fluid rounded-circle"
-          />
-          <h1 class="text-light"><a href="index.html">Quang Nguyen</a></h1>
-          <div class="social-links mt-3 text-center">
-            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-          </div>
-        </div>
+    </div>
 
-        <nav id="navbar" class="nav-menu navbar">
-          <ul>
-            <li>
-              <a href="#hero" class="nav-link scrollto active"
-                ><i class="bx bx-home"></i> <span>Home</span></a
-              >
-            </li>
-            <li>
-              <a href="#about" class="nav-link scrollto"
-                ><i class="bx bx-user"></i> <span>About</span></a
-              >
-            </li>
-            <li>
-              <a href="#resume" class="nav-link scrollto"
-                ><i class="bx bx-file-blank"></i> <span>Resume</span></a
-              >
-            </li>
-            <li>
-              <a href="#awards" class="nav-link scrollto"
-                ><i class="bx bx-book-content"></i>
-                <span>Awards and Achievements</span></a
-              >
-            </li>
-          </ul>
-        </nav>
-        <!-- .nav-menu -->
-      </div>
-    </header>
-    <!-- End Header -->
+    <!-- GIRL -->
+    <div class="actor girl">
+    <div class="bubble" id="girl-bubble" aria-live="polite"></div>
+    <svg class="char" viewBox="0 0 120 170" aria-label="cô gái">
+      <path class="hair-back" d="M22 60 C20 -4 100 -4 98 60 L100 118 C86 128 34 128 20 118 Z" fill="#5a3a2a"/>
+      <g class="legs">
+        <g class="leg leg-l"><rect x="44" y="118" width="13" height="32" rx="6.5" fill="#ffd9b8"/><ellipse cx="50.5" cy="152" rx="11" ry="6" fill="#ff5c8a"/></g>
+        <g class="leg leg-r"><rect x="63" y="118" width="13" height="32" rx="6.5" fill="#ffd9b8"/><ellipse cx="69.5" cy="152" rx="11" ry="6" fill="#ff5c8a"/></g>
+      </g>
+      <g class="arm arm-l"><rect x="28" y="90" width="13" height="34" rx="6.5" fill="#ffd9b8"/><circle cx="34.5" cy="125" r="7" fill="#ffd9b8"/></g>
+      <path class="dress" d="M40 86 L80 86 L94 132 C72 140 48 140 26 132 Z" fill="#ff7aa2"/>
+      <rect x="40" y="84" width="40" height="22" rx="10" fill="#ff7aa2"/>
+      <circle cx="60" cy="98" r="3.5" fill="#fff" opacity=".9"/>
+      <path d="M44 112 C52 108 68 108 76 112" stroke="#fff" stroke-width="2" fill="none" opacity=".7"/>
+      <g class="head">
+        <circle cx="60" cy="54" r="36" fill="#ffd9b8"/>
+        <path class="hair" d="M24 60 C22 -6 98 -6 96 60 C92 44 86 50 80 56 C74 42 56 40 48 54 C42 48 32 46 24 60 Z" fill="#5a3a2a"/>
+        <g class="bow">
+          <ellipse cx="86" cy="28" rx="8" ry="5" fill="#ff4d79" transform="rotate(-30 86 28)"/>
+          <ellipse cx="98" cy="34" rx="8" ry="5" fill="#ff4d79" transform="rotate(40 98 34)"/>
+          <circle cx="92" cy="31" r="3.5" fill="#ffb3c6"/>
+        </g>
+        <ellipse class="blush" cx="36" cy="68" rx="7" ry="4" fill="#ff9bb3"/>
+        <ellipse class="blush" cx="84" cy="68" rx="7" ry="4" fill="#ff9bb3"/>
+        <g class="eyes">
+          <g class="eye">
+            <ellipse cx="46" cy="60" rx="4.5" ry="6.5" fill="#2b2b3a"/><circle cx="48" cy="57.5" r="1.8" fill="#fff"/>
+            <path d="M40 54 L37 51 M43 52 L41 48" stroke="#2b2b3a" stroke-width="1.6" stroke-linecap="round"/>
+          </g>
+          <g class="eye">
+            <ellipse cx="74" cy="60" rx="4.5" ry="6.5" fill="#2b2b3a"/><circle cx="76" cy="57.5" r="1.8" fill="#fff"/>
+            <path d="M80 54 L83 51 M77 52 L79 48" stroke="#2b2b3a" stroke-width="1.6" stroke-linecap="round"/>
+          </g>
+        </g>
+        <g class="heart-eyes">
+          <path d="M46 65 C37 58 41 51 46 56 C51 51 55 58 46 65Z" fill="#ff4d79"/>
+          <path d="M74 65 C65 58 69 51 74 56 C79 51 83 58 74 65Z" fill="#ff4d79"/>
+        </g>
+        <path class="mouth" d="M52 76 Q60 84 68 76" stroke="#c0392b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path class="mouth-open" d="M53 75 Q60 88 67 75 Z" fill="#c0392b"/>
+      </g>
+      <g class="arm arm-r"><rect x="79" y="90" width="13" height="34" rx="6.5" fill="#ffd9b8"/><circle cx="85.5" cy="125" r="7" fill="#ffd9b8"/></g>
+    </svg>
+    </div>
 
-    <!-- ======= Hero Section ======= -->
-    <section
-      id="hero"
-      class="d-flex flex-column justify-content-center align-items-center"
-    >
-      <div class="hero-container" data-aos="fade-in">
-        <h1>Quang Nguyen</h1>
-        <p>
-          I'm <span class="typed" data-typed-items="Backend Developer"></span>
-        </p>
-      </div>
-    </section>
-    <!-- End Hero -->
+    <div class="hint" id="hint"><span class="hint-icon">👆</span><span class="hint-text" id="hint-text"></span></div>
 
-    <main id="main">
-      <!-- ======= About Section ======= -->
-      <section id="about" class="about">
-        <div class="container">
-          <div class="section-title">
-            <h2>About</h2>
-          </div>
+    <button class="replay" id="replay" type="button" aria-label="xem lại">🔁</button>
 
-          <div class="row">
-            <div class="col-lg-4" data-aos="fade-right">
-              <img src="assets/img/profile-img.jpg" class="img-fluid" alt="" />
-            </div>
-            <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-              <h3>Backend Developer</h3>
-              <div class="row">
-                <div class="col-lg-6">
-                  <ul>
-                    <li>
-                      <i class="bi bi-chevron-right"></i>
-                      <strong>Degree:</strong>
-                      <span>Advance Diploma in Software Engineer</span>
-                    </li>
-                    <li>
-                      <i class="bi bi-chevron-right"></i>
-                      <strong>Birthday:</strong> <span>Jan 6th, 2000 </span>
-                    </li>
-                    <li>
-                      <i class="bi bi-chevron-right"></i>
-                      <strong>Phone:</strong> <span>0826057089</span>
-                    </li>
-                    <li>
-                      <i class="bi bi-chevron-right"></i>
-                      <strong>Email:</strong>
-                      <span>nguyenquang06012000@gmail.com</span>
-                    </li>
-                    <li>
-                      <i class="bi bi-chevron-right"></i>
-                      <strong>City:</strong> <span>Da Nang, Viet Nam</span>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-lg-6">
-                  <ul></ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- End About Section -->
+    <div class="fx" id="fx" aria-hidden="true"></div>
+  </div>
 
-      <!-- ======= Skills Section ======= -->
-      <section id="skills" class="skills section-bg">
-        <div class="container">
-          <div class="section-title">
-            <h2>Skills</h2>
-          </div>
-          <ul>
-            <li>
-              <i class="bi bi-chevron-right"></i>
-              <strong>Programming language:</strong>
-              <span>NodeJS, Typescript, Python</span>
-            </li>
-            <li>
-              <i class="bi bi-chevron-right"></i>
-              <strong>Frameworks/ Platforms:</strong>
-              <span
-                >NodeJS Express, NestJS, ReactJS, Antd, Apollo-GraphQL, Webook (
-                Facebook, Azure Microsoft),
-              </span>
-            </li>
-            <li>
-              <i class="bi bi-chevron-right"></i>
-              <strong>Microservices:</strong>
-              <span>GRPC, Kafka</span>
-            </li>
-            <li>
-              <i class="bi bi-chevron-right"></i> <strong>Databases:</strong>
-              <span>NoSQL(Redis, MongoDB), SQL (SQL Server, PostgreSQL)</span>
-            </li>
-            <li>
-              <i class="bi bi-chevron-right"></i> <strong>Others:</strong>
-              <span>Queue, Nginx, CI/CD, Data structures and Algorithms</span>
-            </li>
-          </ul>
-        </div>
-      </section>
-      <!-- End Skills Section -->
-
-      <!-- ======= Resume Section ======= -->
-      <section id="resume" class="resume">
-        <div class="container">
-          <div class="section-title">
-            <h2>Resume</h2>
-          </div>
-
-          <div class="row">
-            <div class="col-lg-6" data-aos="fade-up">
-              <h3 class="resume-title">Education</h3>
-              <div class="resume-item">
-                <h4>Advance Diploma in Software Engineer</h4>
-                <h5>8/2018 - 7/2021</h5>
-                <p><em>Softech Aptech Da Nang</em></p>
-                <p>Grade: Distinction</p>
-              </div>
-            </div>
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100"></div>
-            <h3 class="resume-title">Professional Experience</h3>
-          </div>
-          <div class="resume-item">
-            <div data-aos="fade-up">
-              <h4>
-                <b>Hodfords Viet Nam</b> - Backend Developer - Team leader
-              </h4>
-              <h5>9/2021 - now</h5>
-              <ul>
-                <li>
-                  Developing Backend service using NestJS, Kakfa, and GRPC
-                  Microservice with PostgreSQL Database
-                </li>
-                <li>
-                  Building a reporting system used by large enterprises,
-                  reducing ESG reporting time for Diginex
-                </li>
-                <li>Integrate with Keycloak for user management and SSO</li>
-                <li>Use Stripe to integrate with payment subscriptions</li>
-                <li>
-                  Setup CI/CD, config deployment, health check, and monitor via
-                  Kubernetes,
-                </li>
-                <li>
-                  Join the project as Backend team leader, manage team members,
-                  and be responsible for communicating with BA, QA, and SA about
-                  project operations, estimation, giving solutions to the team,
-                  designing database schema
-                </li>
-                <li>
-                  Review, maintain, and refactor code with es-lint, and sonar
-                  lint rules
-                </li>
-                <li>Optimize the database query performance</li>
-                <li>
-                  Building the chatbot system to help victims of human
-                  trafficking to report to the Philippine government, that way
-                  the government can help them in time
-                </li>
-                <li>
-                  Research and integrate the chatbot with Facebook Developer
-                  Application for victims can report via the chatbot
-                </li>
-                <li>
-                  Build centralized library packages that can be reused in
-                  multiple projects to reduce duplicated code
-                </li>
-                <li>
-                  Implement unit tests, end to end tests to ensure the quality
-                  of the backend services
-                </li>
-                <li>
-                  As a mentor to help training knowledge NestJS, PostgreSQL,
-                  etc.. for internships and freshers
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="resume-item">
-            <div data-aos="fade-up">
-              <h4><b>Küchenheld</b> - Software Developer (Freelancer)</h4>
-              <h5>12/2021 - 3/2022</h5>
-              <ul>
-                <li>
-                  Maintained and developed the features using NestJS and ReactJs
-                  with PostgreSQL database for helping businesses manage and
-                  sell their products
-                </li>
-                <li>Review, refactor code, and test features</li>
-                <li>
-                  Re-developed features using NestJs, and ReactJS instead of
-                  Salesforce
-                </li>
-                <li>Used K8s for deployment</li>
-              </ul>
-            </div>
-          </div>
-          <div class="resume-item">
-            <div data-aos="fade-up">
-              <h4><b>AcexisJSC</b> - Software developer</h4>
-              <h5>10/2019 - 6/2021</h5>
-              <ul>
-                <li>
-                  Maintained and developed the web application to help hospitals
-                  and pharmacies manage their data such as patient information,
-                  drug inventory
-                </li>
-                <li>
-                  Developed Backend services using NestJS with MongoDB database
-                </li>
-                <li>
-                  Used ReactJs with Antd and Apollo-GraphQL to integrate with
-                  Backend services
-                </li>
-                <li>
-                  Setup CI/CD, config deployment via Gitlab-ci, Nginx, Pm2,
-                  Docker
-                </li>
-                <li>Built the automation bot via RPA</li>
-                <li>Developed the live stream system using HLS stream</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="awards" class="resume">
-        <div class="container">
-          <div class="section-title">
-            <h2>Achievements</h2>
-          </div>
-          <ul>
-            <li>
-              <a
-                href="https://baoquangbinh.vn/giao-duc/201803/tim-kiem-tai-nang-tin-hoc-tre-trong-toan-tinh-2154427/?fbclid=IwAR3SAGh3P5dScMYvtX4xQlHf5TtF8YDDwsKkeQv5vIg9bv202ssY2-pKINU"
-                target="_blank"
-              >
-                First prize in Quang Binh University's Young Informatics Talent
-                Search Contest 2018</a
-              >
-            </li>
-            <li>
-              Participated in the National Competition for Excellent Students in
-              Informatics 2018
-            </li>
-            <li>
-              First prize in the Computer Science contest in Quang Binh Province
-              2018
-            </li>
-            <li>
-              First prize in the Computer Science contest in Quang Binh Province
-              2017
-            </li>
-          </ul>
-        </div>
-      </section>
-      <!-- End Resume Section -->
-
-      <!-- ======= Contact Section ======= -->
-      <!-- <section id="contact" class="contact">
-        <div class="container">
-          <div class="section-title">
-            <h2>Contact</h2>
-            <p>
-              Magnam dolores commodi suscipit. Necessitatibus eius consequatur
-              ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam
-              quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.
-              Quia fugiat sit in iste officiis commodi quidem hic quas.
-            </p>
-          </div>
-
-          <div class="row" data-aos="fade-in">
-            <div class="col-lg-5 d-flex align-items-stretch">
-              <div class="info">
-                <div class="address">
-                  <i class="bi bi-geo-alt"></i>
-                  <h4>Location:</h4>
-                  <p>A108 Adam Street, New York, NY 535022</p>
-                </div>
-
-                <div class="email">
-                  <i class="bi bi-envelope"></i>
-                  <h4>Email:</h4>
-                  <p>info@example.com</p>
-                </div>
-
-                <div class="phone">
-                  <i class="bi bi-phone"></i>
-                  <h4>Call:</h4>
-                  <p>+1 5589 55488 55s</p>
-                </div>
-
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
-                  frameborder="0"
-                  style="border: 0; width: 100%; height: 290px"
-                  allowfullscreen
-                ></iframe>
-              </div>
-            </div>
-
-            <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-              <form
-                action="forms/contact.php"
-                method="post"
-                role="form"
-                class="php-email-form"
-              >
-                <div class="row">
-                  <div class="form-group col-md-6">
-                    <label for="name">Your Name</label>
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control"
-                      id="name"
-                      required
-                    />
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="name">Your Email</label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      name="email"
-                      id="email"
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="name">Subject</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="subject"
-                    id="subject"
-                    required
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="name">Message</label>
-                  <textarea
-                    class="form-control"
-                    name="message"
-                    rows="10"
-                    required
-                  ></textarea>
-                </div>
-                <div class="my-3">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">
-                    Your message has been sent. Thank you!
-                  </div>
-                </div>
-                <div class="text-center">
-                  <button type="submit">Send Message</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section> -->
-      <!-- End Contact Section -->
-    </main>
-    <!-- End #main -->
-
-    <!-- ======= Footer ======= -->
-    <footer id="footer">
-      <div class="container">
-        <div class="copyright">
-          <!-- &copy; Copyright <strong><span>iPortfolio</span></strong> -->
-        </div>
-        <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/ -->
-          Designed by
-          <a href="https://www.linkedin.com/in/quang-nguy%E1%BB%85n-4805521a1/"
-            >Quang Nguyen</a
-          >
-        </div>
-      </div>
-    </footer>
-    <!-- End  Footer -->
-
-    <a
-      href="#"
-      class="back-to-top d-flex align-items-center justify-content-center"
-      ><i class="bi bi-arrow-up-short"></i
-    ></a>
-
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/typed.js/typed.umd.js"></script>
-    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
-
-    <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
-  </body>
+  <script src="app.js"></script>
+</body>
 </html>
