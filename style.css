@@ -157,29 +157,15 @@ body[data-stage="3"] .ground, body[data-stage="4"] .ground { filter: brightness(
 /* ---------- dog: Ngác ---------- */
 .dog {
   position: absolute;
-  bottom: 11.5%;
+  bottom: 12.5%;
   left: -110px;
   width: 84px;
   z-index: 1;
   cursor: pointer;
-  animation: dogrun 16s linear infinite 1s;
-  transition: filter 2s ease;
+  transition: left 0s linear, filter 2s ease;
 }
 body[data-stage="3"] .dog, body[data-stage="4"] .dog { filter: brightness(.7); }
-@keyframes dogrun {
-  0%   { left: -110px; }
-  44%  { left: calc(100% + 20px); }
-  50%  { left: calc(100% + 20px); }
-  94%  { left: -110px; }
-  100% { left: -110px; }
-}
-.dog-flip { animation: dogflip 16s step-end infinite 1s; transform-origin: 50% 50%; }
-@keyframes dogflip {
-  0%   { transform: scaleX(1); }
-  47%  { transform: scaleX(-1); }
-  97%  { transform: scaleX(1); }
-  100% { transform: scaleX(1); }
-}
+.dog-flip { transform-origin: 50% 50%; }
 .dog-svg { display: block; width: 100%; height: auto; overflow: visible; animation: dogbob .32s ease-in-out infinite alternate; }
 @keyframes dogbob { from { transform: translateY(0); } to { transform: translateY(-4px); } }
 .dog .dleg, .dog .tail, .dog .ear, .dog .dhead { transform-box: fill-box; }
@@ -192,6 +178,15 @@ body[data-stage="3"] .dog, body[data-stage="4"] .dog { filter: brightness(.7); }
 @keyframes flap { from { transform: rotate(-8deg); } to { transform: rotate(14deg); } }
 .dog .dhead { transform-origin: 30% 100%; animation: nod 1.2s ease-in-out infinite; }
 .dog.bark .dog-svg { animation: dogjump .5s ease-out 2; }
+.dog.sit .dog-svg { animation: none; }
+.dog.sit .dleg { animation: none; }
+.dog.sit .tail { animation-duration: .12s; }
+.dog.sit .ear { animation-duration: .6s; }
+.dog.sit .dhead { animation: dogtilt 1s ease-in-out infinite alternate; }
+@keyframes dogtilt { from { transform: rotate(-10deg); } to { transform: rotate(6deg); } }
+.girl.petting .arm-l { animation: pet .45s ease-in-out infinite alternate; }
+@keyframes pet { from { transform: rotate(8deg); } to { transform: rotate(30deg); } }
+.girl.petting .head { animation: none; transform: rotate(-12deg) translate(-3px, 3px); }
 @keyframes dogjump { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(-30px) rotate(-6deg); } }
 .dog-name {
   position: absolute;
@@ -224,6 +219,10 @@ body[data-stage="3"] .dog, body[data-stage="4"] .dog { filter: brightness(.7); }
   pointer-events: none;
 }
 .dog-bubble.show { opacity: 1; transform: translateX(-50%) scale(1); }
+.dog.sit .dog-name { opacity: 0; transition: opacity .2s; }
+.dog-name { transition: opacity .2s; }
+.dog.sit .dog-bubble { left: auto; right: 62%; bottom: 70%; transform: scale(.5); }
+.dog.sit .dog-bubble.show { transform: scale(1); }
 
 /* ---------- characters ---------- */
 .actor {

@@ -222,6 +222,47 @@ const dog = document.getElementById('dog');
 const dogBubble = document.getElementById('dog-bubble');
 const BARKS = ['Gâu! 🐶', 'Gâu gâu!', 'Ngác đây! 🐾', 'Chơi với Ngác đi', 'Gâu? 🦴', 'Hức hức 🐕'];
 let barkTimer = null;
+const dogFlip = document.querySelector('.dog-flip');
+const DOG_SPEED = 130; // px/s
+
+function dogMove(x, dir) {
+  dogFlip.style.transform = dir > 0 ? 'scaleX(1)' : 'scaleX(-1)';
+  const cur = dog.getBoundingClientRect().left;
+  const dist = Math.abs(x - cur);
+  const dur = reduced ? 0.05 : dist / DOG_SPEED;
+  dog.style.transitionDuration = dur + 's, 2s';
+  dog.style.left = Math.round(x) + 'px';
+  return wait(dur * 1000 + 60);
+}
+
+async function dogLoop() {
+  await wait(1500);
+  for (;;) {
+    if (document.hidden) { await wait(1000); continue; }
+    const dw = dog.offsetWidth;
+    const g = girl.getBoundingClientRect();
+    // chạy tới cạnh Lynk (phía tay trái của cô ấy)
+    await dogMove(g.left - dw * 0.6, 1);
+    dog.classList.add('sit');
+    const canPet = stage < 3; // lúc đang ôm thì tay bận rồi
+    if (canPet) girl.classList.add('petting');
+    dogBubble.textContent = pick(['Hức hức 🥰', 'Gâu~ 💕', 'Sướng quá 🐾']);
+    dogBubble.classList.add('show');
+    for (let i = 0; i < 5; i++) {
+      const c = center(dog);
+      popHearts(c.x + 10, c.y - 30, 2);
+      await wait(480);
+    }
+    dogBubble.classList.remove('show');
+    await wait(400);
+    dog.classList.remove('sit');
+    girl.classList.remove('petting');
+    // chạy về
+    await dogMove(-dw - 30, -1);
+    await wait(1200 + rand(0, 1800));
+  }
+}
+dogLoop();
 dog.addEventListener('pointerdown', (e) => {
   e.stopPropagation();
   const c = center(dog);
